@@ -14,7 +14,7 @@ export const menuItems: MenuItem[] = [
     id: 'combo-1',
     name: 'XYZ Classic Combo',
     description: 'Классический бургер, картофель фри и напиток на выбор',
-    price: 549,
+    price: 54 900,
     image: '/images/combo-classic.jpg',
     category: 'combo',
     tags: ['Хит продаж']
@@ -23,7 +23,7 @@ export const menuItems: MenuItem[] = [
     id: 'combo-2',
     name: 'Double XYZ Combo',
     description: 'Двойной бургер с беконом, большая порция фри и напиток',
-    price: 749,
+    price: 74 900,
     image: '/images/combo-double.jpg',
     category: 'combo',
     tags: ['Для голодных']
@@ -32,7 +32,7 @@ export const menuItems: MenuItem[] = [
     id: 'combo-3',
     name: 'Spicy XYZ Combo',
     description: 'Острый бургер с халапеньо, фри со специями и напиток',
-    price: 649,
+    price: 64 900,
     image: '/images/combo-spicy.jpg',
     category: 'combo',
     tags: ['Острое']
@@ -41,7 +41,7 @@ export const menuItems: MenuItem[] = [
     id: 'combo-4',
     name: 'Cheese Lover Combo',
     description: 'Тройной сыр бургер, сырные шарики и напиток',
-    price: 699,
+    price: 69 900,
     image: '/images/combo-cheese.jpg',
     category: 'combo'
   },
@@ -51,7 +51,7 @@ export const menuItems: MenuItem[] = [
     id: 'strips-1',
     name: 'Куриные стрипсы 6 шт',
     description: 'Хрустящие куриные стрипсы в панировке',
-    price: 299,
+    price: 29 900,
     image: '/images/strips-6.jpg',
     category: 'strips'
   },
@@ -59,7 +59,7 @@ export const menuItems: MenuItem[] = [
     id: 'strips-2',
     name: 'Куриные стрипсы 12 шт',
     description: 'Большая порция хрустящих куриных стрипсов',
-    price: 499,
+    price: 49 900,
     image: '/images/strips-12.jpg',
     category: 'strips',
     tags: ['Выгодно']
@@ -68,7 +68,7 @@ export const menuItems: MenuItem[] = [
     id: 'strips-3',
     name: 'Острые стрипсы 6 шт',
     description: 'Стрипсы в остром маринаде с перцем чили',
-    price: 329,
+    price: 32 900,
     image: '/images/strips-spicy.jpg',
     category: 'strips',
     tags: ['Острое']
@@ -77,7 +77,7 @@ export const menuItems: MenuItem[] = [
     id: 'strips-4',
     name: 'Стрипсы BBQ 6 шт',
     description: 'Стрипсы в соусе барбекю с дымком',
-    price: 349,
+    price: 34 900,
     image: '/images/strips-bbq.jpg',
     category: 'strips'
   },
@@ -87,7 +87,7 @@ export const menuItems: MenuItem[] = [
     id: 'drink-1',
     name: 'Coca-Cola',
     description: 'Классическая Coca-Cola 0.5л',
-    price: 129,
+    price: 12 900,
     image: '/images/drink-cola.jpg',
     category: 'drinks'
   },
@@ -95,7 +95,7 @@ export const menuItems: MenuItem[] = [
     id: 'drink-2',
     name: 'Fanta',
     description: 'Апельсиновая Fanta 0.5л',
-    price: 129,
+    price: 12 900,
     image: '/images/drink-fanta.jpg',
     category: 'drinks'
   },
@@ -103,7 +103,7 @@ export const menuItems: MenuItem[] = [
     id: 'drink-3',
     name: 'XYZ Shake Vanilla',
     description: 'Ванильный молочный коктейль',
-    price: 249,
+    price: 24 900,
     image: '/images/shake-vanilla.jpg',
     category: 'drinks',
     tags: ['Десертное']
@@ -112,7 +112,7 @@ export const menuItems: MenuItem[] = [
     id: 'drink-4',
     name: 'XYZ Shake Chocolate',
     description: 'Шоколадный молочный коктейль',
-    price: 249,
+    price: 24 900,
     image: '/images/shake-chocolate.jpg',
     category: 'drinks',
     tags: ['Десертное']
@@ -123,7 +123,7 @@ export const menuItems: MenuItem[] = [
     id: 'sauce-1',
     name: 'XYZ Special Sauce',
     description: 'Фирменный соус XYZ Burger',
-    price: 59,
+    price: 5 900,
     image: '/images/sauce-special.jpg',
     category: 'sauces',
     tags: ['Фирменный']
@@ -132,7 +132,7 @@ export const menuItems: MenuItem[] = [
     id: 'sauce-2',
     name: 'BBQ Sauce',
     description: 'Классический соус барбекю с дымком',
-    price: 49,
+    price: 4 900,
     image: '/images/sauce-bbq.jpg',
     category: 'sauces'
   },
@@ -140,7 +140,7 @@ export const menuItems: MenuItem[] = [
     id: 'sauce-3',
     name: 'Spicy Mayo',
     description: 'Острый майонез с чили',
-    price: 49,
+    price: 4 900,
     image: '/images/sauce-spicy.jpg',
     category: 'sauces',
     tags: ['Острое']
@@ -149,7 +149,7 @@ export const menuItems: MenuItem[] = [
     id: 'sauce-4',
     name: 'Cheese Sauce',
     description: 'Сырный соус для стрипсов и фри',
-    price: 69,
+    price: 6 900,
     image: '/images/sauce-cheese.jpg',
     category: 'sauces'
   }
