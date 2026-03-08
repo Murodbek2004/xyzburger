@@ -65,11 +65,11 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Phone className="w-5 h-5 text-primary" />
-                <span>8 (800) 123-45-67</span>
+                <span>+998 123 45 67</span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span>Москва, ул. Бургерная, 42</span>
+                <span>Сеул Мун</span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Clock className="w-5 h-5 text-primary" />
