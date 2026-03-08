@@ -78,7 +78,7 @@ export function MenuCard({ item, index }: MenuCardProps) {
 
         <div className="flex items-center justify-between">
           <span className="text-xl font-bold text-primary">
-            {item.price} ₽
+            {item.price} so'm
           </span>
           <button
             onClick={handleAddToCart}
