@@ -1,63 +1,68 @@
 'use client'
 
 import { Flame, Heart, Leaf, Award } from 'lucide-react'
-
-const features = [
-  {
-    icon: Flame,
-    title: 'Готовим на гриле',
-    description: 'Каждая котлета готовится на открытом огне для идеального вкуса'
-  },
-  {
-    icon: Heart,
-    title: 'С любовью',
-    description: 'Вкладываем душу в каждый бургер, который готовим для вас'
-  },
-  {
-    icon: Leaf,
-    title: 'Свежие продукты',
-    description: 'Только свежие овощи и качественное мясо каждый день'
-  },
-  {
-    icon: Award,
-    title: 'Премиум качество',
-    description: 'Лучшие ингредиенты от проверенных поставщиков'
-  }
-]
+import { useTranslation } from '@/lib/language-store'
 
 const generations = [
   {
     name: 'Gen X',
     years: '1965-1980',
-    description: 'Классические рецепты, проверенные временем',
     color: 'bg-amber-500'
   },
   {
     name: 'Millennials',
     years: '1981-1996',
-    description: 'Инновации и смелые вкусовые сочетания',
     color: 'bg-primary'
   },
   {
     name: 'Gen Z',
     years: '1997-2012',
-    description: 'Тренды, фото-friendly подача и быстрота',
     color: 'bg-accent'
   }
 ]
 
 export function AboutSection() {
+  const t = useTranslation()
+
+  const features = [
+    {
+      icon: Flame,
+      title: t.about.features.grill.title,
+      description: t.about.features.grill.description
+    },
+    {
+      icon: Heart,
+      title: t.about.features.love.title,
+      description: t.about.features.love.description
+    },
+    {
+      icon: Leaf,
+      title: t.about.features.fresh.title,
+      description: t.about.features.fresh.description
+    },
+    {
+      icon: Award,
+      title: t.about.features.premium.title,
+      description: t.about.features.premium.description
+    }
+  ]
+
+  const generationDescriptions = [
+    t.about.generations.genX.description,
+    t.about.generations.millennials.description,
+    t.about.generations.genZ.description,
+  ]
+
   return (
     <section id="about" className="py-16 md:py-24 bg-secondary/30">
       <div className="container mx-auto px-4">
         {/* Main About */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-            Почему <span className="text-primary">XYZ Burger</span>?
+            {t.about.whyUs} <span className="text-primary">XYZ Burger</span>{t.about.whyUsEnd}
           </h2>
           <p className="text-lg text-muted-foreground text-balance">
-            Мы создаём бургеры, которые объединяют три поколения. От классических рецептов до смелых экспериментов — 
-            каждый найдёт что-то по душе.
+            {t.about.description}
           </p>
         </div>
 
@@ -85,7 +90,7 @@ export function AboutSection() {
         {/* Generations */}
         <div className="max-w-4xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-8">
-            Для всех поколений
+            {t.about.forAllGenerations}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {generations.map((gen, index) => (
@@ -102,7 +107,7 @@ export function AboutSection() {
                   {gen.years}
                 </div>
                 <p className="text-muted-foreground">
-                  {gen.description}
+                  {generationDescriptions[index]}
                 </p>
               </div>
             ))}

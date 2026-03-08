@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Top bun -->
+  <path d="M4 14 C4 8 10 4 16 4 C22 4 28 8 28 14 L4 14 Z" fill="#E8A54B"/>
+  <ellipse cx="8" cy="10" rx="1" ry="0.8" fill="#D4924A"/>
+  <ellipse cx="14" cy="8" rx="1.2" ry="0.8" fill="#D4924A"/>
+  <ellipse cx="21" cy="9" rx="1" ry="0.7" fill="#D4924A"/>
+  <ellipse cx="24" cy="12" rx="0.8" ry="0.6" fill="#D4924A"/>
+  
+  <!-- Lettuce -->
+  <path d="M3 15 Q5 17 8 14 Q11 17 14 14 Q17 17 20 14 Q23 17 26 14 Q28 16 29 15 L29 16 Q27 18 24 16 Q21 19 18 16 Q15 19 12 16 Q9 19 6 16 Q4 18 3 16 Z" fill="#5CB85C"/>
+  
+  <!-- Tomato -->
+  <path d="M3 16 L29 16 L29 19 L3 19 Z" fill="#E74C3C"/>
+  
+  <!-- Patty -->
+  <path d="M3 19 L29 19 L29 23 C29 24 28 25 27 25 L5 25 C4 25 3 24 3 23 Z" fill="#6B4423"/>
+  
+  <!-- Bottom bun -->
+  <path d="M4 25 L28 25 C28 27 27 28 26 28 L6 28 C5 28 4 27 4 25 Z" fill="#E8A54B"/>
+</svg>

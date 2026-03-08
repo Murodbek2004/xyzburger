@@ -1,8 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ShoppingBag, Menu, X } from 'lucide-react'
+import { ShoppingBag, Menu, X, Ticket } from 'lucide-react'
+import Link from 'next/link'
 import { useCartStore } from '@/lib/cart-store'
+import { useTranslation } from '@/lib/language-store'
+import { LanguageSwitcher } from './language-switcher'
 import { cn } from '@/lib/utils'
 
 export function Header() {
@@ -10,6 +13,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { getTotalItems, toggleCart } = useCartStore()
   const totalItems = getTotalItems()
+  const t = useTranslation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +30,13 @@ export function Header() {
       setIsMobileMenuOpen(false)
     }
   }
+
+  const navItems = [
+    { id: 'combo', name: t.nav.combo },
+    { id: 'strips', name: t.nav.strips },
+    { id: 'drinks', name: t.nav.drinks },
+    { id: 'sauces', name: t.nav.sauces },
+  ]
 
   return (
     <header
@@ -52,28 +63,39 @@ export function Header() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {['combo', 'strips', 'drinks', 'sauces'].map((section) => (
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((section) => (
               <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className="text-foreground/80 hover:text-primary transition-colors font-medium capitalize"
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className="text-foreground/80 hover:text-primary transition-colors font-medium"
               >
-                {section === 'combo' ? 'Комбо' : 
-                 section === 'strips' ? 'Стрипсы' : 
-                 section === 'drinks' ? 'Напитки' : 'Соусы'}
+                {section.name}
               </button>
             ))}
+            <Link
+              href="/promo"
+              className="flex items-center gap-1 text-foreground/80 hover:text-primary transition-colors font-medium"
+            >
+              <Ticket className="w-4 h-4" />
+              {t.nav.promo}
+            </Link>
           </nav>
 
-          {/* Cart Button */}
-          <div className="flex items-center gap-4">
+          {/* Right Side */}
+          <div className="flex items-center gap-3">
+            {/* Language Switcher - Desktop */}
+            <div className="hidden sm:block">
+              <LanguageSwitcher />
+            </div>
+
+            {/* Cart Button */}
             <button
               onClick={toggleCart}
               className="relative flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-full font-medium hover:bg-primary/90 transition-all hover:scale-105"
             >
               <ShoppingBag className="w-5 h-5" />
-              <span className="hidden sm:inline">Корзина</span>
+              <span className="hidden sm:inline">{t.cart.title}</span>
               {totalItems > 0 && (
                 <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground w-6 h-6 rounded-full text-sm flex items-center justify-center font-bold animate-in zoom-in-50 duration-200">
                   {totalItems}
@@ -95,12 +117,7 @@ export function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border animate-in slide-in-from-top-2 duration-200">
             <nav className="flex flex-col py-4">
-              {[
-                { id: 'combo', name: 'Комбо' },
-                { id: 'strips', name: 'Стрипсы' },
-                { id: 'drinks', name: 'Напитки' },
-                { id: 'sauces', name: 'Соусы' }
-              ].map((section) => (
+              {navItems.map((section) => (
                 <button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
@@ -109,6 +126,18 @@ export function Header() {
                   {section.name}
                 </button>
               ))}
+              <Link
+                href="/promo"
+                className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-secondary/50 transition-colors font-medium text-left flex items-center gap-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Ticket className="w-4 h-4" />
+                {t.nav.promo}
+              </Link>
+              {/* Language Switcher - Mobile */}
+              <div className="px-4 py-3 sm:hidden">
+                <LanguageSwitcher />
+              </div>
             </nav>
           </div>
         )}

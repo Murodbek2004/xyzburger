@@ -4,6 +4,7 @@ import { Plus, Check } from 'lucide-react'
 import { useState } from 'react'
 import type { MenuItem } from '@/lib/menu-data'
 import { useCartStore } from '@/lib/cart-store'
+import { useTranslation, formatPrice } from '@/lib/language-store'
 import { cn } from '@/lib/utils'
 
 interface MenuCardProps {
@@ -14,6 +15,7 @@ interface MenuCardProps {
 export function MenuCard({ item, index }: MenuCardProps) {
   const [isAdded, setIsAdded] = useState(false)
   const addItem = useCartStore((state) => state.addItem)
+  const t = useTranslation()
 
   const handleAddToCart = () => {
     addItem({
@@ -25,6 +27,19 @@ export function MenuCard({ item, index }: MenuCardProps) {
     })
     setIsAdded(true)
     setTimeout(() => setIsAdded(false), 1500)
+  }
+
+  // Translate tags
+  const getTagLabel = (tag: string) => {
+    const tagMap: Record<string, string> = {
+      'Хит продаж': t.tags.hit,
+      'Острое': t.tags.spicy,
+      'Выгодно': t.tags.profitable,
+      'Для голодных': t.tags.forHungry,
+      'Десертное': t.tags.dessert,
+      'Фирменный': t.tags.signature,
+    }
+    return tagMap[tag] || tag
   }
 
   return (
@@ -60,7 +75,7 @@ export function MenuCard({ item, index }: MenuCardProps) {
                   !['Хит продаж', 'Острое', 'Выгодно', 'Для голодных', 'Десертное', 'Фирменный'].includes(tag) && 'bg-secondary text-secondary-foreground'
                 )}
               >
-                {tag}
+                {getTagLabel(tag)}
               </span>
             ))}
           </div>
@@ -78,7 +93,7 @@ export function MenuCard({ item, index }: MenuCardProps) {
 
         <div className="flex items-center justify-between">
           <span className="text-xl font-bold text-primary">
-            {item.price.toLocaleString('uz-UZ')} so'm
+            {formatPrice(item.price)} {t.currency}
           </span>
           <button
             onClick={handleAddToCart}
@@ -93,12 +108,12 @@ export function MenuCard({ item, index }: MenuCardProps) {
             {isAdded ? (
               <>
                 <Check className="w-4 h-4" />
-                <span>Добавлено</span>
+                <span>{t.cart.added}</span>
               </>
             ) : (
               <>
                 <Plus className="w-4 h-4" />
-                <span>В корзину</span>
+                <span>{t.cart.addToCart}</span>
               </>
             )}
           </button>

@@ -1,8 +1,11 @@
 'use client'
 
 import { Instagram, Facebook, Send, Phone, MapPin, Clock } from 'lucide-react'
+import { useTranslation } from '@/lib/language-store'
 
 export function Footer() {
+  const t = useTranslation()
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
@@ -18,7 +21,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-muted-foreground mb-4">
-              Бургеры для всех поколений. Премиальное качество и неповторимый вкус.
+              {t.footer.description}
             </p>
             <div className="flex gap-3">
               <a
@@ -44,15 +47,20 @@ export function Footer() {
 
           {/* Menu */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Меню</h4>
+            <h4 className="font-bold text-lg mb-4">{t.footer.menu}</h4>
             <ul className="space-y-2">
-              {['Комбо', 'Стрипсы', 'Напитки', 'Соусы'].map((item) => (
-                <li key={item}>
+              {[
+                { id: 'combo', name: t.nav.combo },
+                { id: 'strips', name: t.nav.strips },
+                { id: 'drinks', name: t.nav.drinks },
+                { id: 'sauces', name: t.nav.sauces },
+              ].map((item) => (
+                <li key={item.id}>
                   <a
-                    href={`#${item.toLowerCase()}`}
+                    href={`#${item.id}`}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
@@ -61,7 +69,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Контакты</h4>
+            <h4 className="font-bold text-lg mb-4">{t.footer.contacts}</h4>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Phone className="w-5 h-5 text-primary" />
@@ -69,25 +77,25 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span>Сеул Мун</span>
+                <span>{t.footer.address}</span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Clock className="w-5 h-5 text-primary" />
-                <span>Ежедневно 10:00 — 23:00</span>
+                <span>{t.footer.workHours}</span>
               </li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Подписка</h4>
+            <h4 className="font-bold text-lg mb-4">{t.footer.subscription}</h4>
             <p className="text-muted-foreground mb-4">
-              Получайте эксклюзивные предложения и новинки первыми
+              {t.footer.subscriptionDesc}
             </p>
             <div className="flex gap-2">
               <input
                 type="email"
-                placeholder="Ваш email"
+                placeholder={t.footer.emailPlaceholder}
                 className="flex-1 bg-secondary border border-border rounded-full px-4 py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <button className="bg-primary text-primary-foreground p-2 rounded-full hover:bg-primary/90 transition-colors">
@@ -100,14 +108,14 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © 2026 XYZ Burger. Все права защищены.
+            {t.footer.copyright}
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-primary transition-colors">
-              Политика конфиденциальности
+              {t.footer.privacy}
             </a>
             <a href="#" className="hover:text-primary transition-colors">
-              Условия использования
+              {t.footer.terms}
             </a>
           </div>
         </div>

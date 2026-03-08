@@ -1,10 +1,12 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { ArrowDown, Flame, Star, Zap } from 'lucide-react'
+import { ArrowDown, Flame, Star, Zap, UtensilsCrossed, Clock, Award } from 'lucide-react'
+import { useTranslation } from '@/lib/language-store'
 
 export function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
+  const t = useTranslation()
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -59,7 +61,7 @@ export function Hero() {
       <div className="container mx-auto px-4 text-center relative z-10">
         {/* Generation Badge */}
         <div className="inline-flex items-center gap-2 bg-secondary/80 backdrop-blur-sm px-4 py-2 rounded-full mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <span className="text-muted-foreground text-sm">Для поколений</span>
+          <span className="text-muted-foreground text-sm">{t.hero.forGenerations}</span>
           <span className="text-primary font-bold">X</span>
           <span className="text-foreground">•</span>
           <span className="text-primary font-bold">Y</span>
@@ -75,7 +77,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 text-balance">
-          Бургеры, которые объединяют поколения. Премиальное качество и неповторимый вкус в каждом укусе.
+          {t.hero.subtitle}
         </p>
 
         {/* CTA Buttons */}
@@ -84,27 +86,30 @@ export function Hero() {
             onClick={scrollToMenu}
             className="group relative inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-lg hover:bg-primary/90 transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
           >
-            <span>Смотреть меню</span>
+            <span>{t.hero.viewMenu}</span>
             <ArrowDown className="w-5 h-5 group-hover:animate-bounce" />
           </button>
           <button
             onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-flex items-center gap-2 border border-border text-foreground px-8 py-4 rounded-full font-bold text-lg hover:bg-secondary transition-all hover:scale-105"
           >
-            О нас
+            {t.hero.aboutUs}
           </button>
         </div>
 
-        {/* Stats */}
+        {/* Stats - Changed from Location/Clients/Rating to more interesting stats */}
         <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-xl mx-auto mt-16 animate-in fade-in slide-in-from-bottom-12 duration-700 delay-700">
           {[
-            { value: '50+', label: 'Локаций' },
-            { value: '1M+', label: 'Клиентов' },
-            { value: '4.9', label: 'Рейтинг' }
+            { value: '100K+', label: t.hero.stats.burgersSold, icon: UtensilsCrossed },
+            { value: '50K+', label: t.hero.stats.happyClients, icon: Award },
+            { value: '5+', label: t.hero.stats.yearsExperience, icon: Clock }
           ].map((stat, index) => (
-            <div key={index} className="text-center">
+            <div key={index} className="text-center group">
+              <div className="flex justify-center mb-2">
+                <stat.icon className="w-6 h-6 text-primary/70 group-hover:text-primary transition-colors" />
+              </div>
               <div className="text-2xl md:text-4xl font-bold text-primary">{stat.value}</div>
-              <div className="text-sm md:text-base text-muted-foreground">{stat.label}</div>
+              <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>

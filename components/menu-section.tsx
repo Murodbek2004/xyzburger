@@ -1,9 +1,19 @@
 'use client'
 
-import { menuItems, categories } from '@/lib/menu-data'
+import { menuItems } from '@/lib/menu-data'
 import { MenuCard } from './menu-card'
+import { useTranslation } from '@/lib/language-store'
 
 export function MenuSection() {
+  const t = useTranslation()
+
+  const categories = [
+    { id: 'combo', name: t.nav.combo, icon: '🍔' },
+    { id: 'strips', name: t.nav.strips, icon: '🍗' },
+    { id: 'drinks', name: t.nav.drinks, icon: '🥤' },
+    { id: 'sauces', name: t.nav.sauces, icon: '🫙' }
+  ] as const
+
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">

@@ -2,6 +2,7 @@
 
 import { X, Plus, Minus, ShoppingBag, Trash2, ArrowRight } from 'lucide-react'
 import { useCartStore } from '@/lib/cart-store'
+import { useTranslation, formatPrice } from '@/lib/language-store'
 import { useEffect } from 'react'
 
 export function CartSidebar() {
@@ -14,6 +15,7 @@ export function CartSidebar() {
     getTotalPrice,
     clearCart 
   } = useCartStore()
+  const t = useTranslation()
 
   const totalPrice = getTotalPrice()
 
@@ -28,6 +30,12 @@ export function CartSidebar() {
       document.body.style.overflow = ''
     }
   }, [isOpen])
+
+  const getItemsText = (count: number) => {
+    if (count === 1) return t.cart.item
+    if (count >= 2 && count <= 4) return t.cart.items2to4
+    return t.cart.items5plus
+  }
 
   if (!isOpen) return null
 
@@ -45,9 +53,9 @@ export function CartSidebar() {
         <div className="flex items-center justify-between p-4 border-b border-border">
           <div className="flex items-center gap-3">
             <ShoppingBag className="w-6 h-6 text-primary" />
-            <h2 className="text-xl font-bold text-card-foreground">Корзина</h2>
+            <h2 className="text-xl font-bold text-card-foreground">{t.cart.title}</h2>
             <span className="text-muted-foreground">
-              ({items.length} {items.length === 1 ? 'товар' : items.length < 5 ? 'товара' : 'товаров'})
+              ({items.length} {getItemsText(items.length)})
             </span>
           </div>
           <button
@@ -64,16 +72,16 @@ export function CartSidebar() {
             <div className="flex flex-col items-center justify-center h-full text-center">
               <ShoppingBag className="w-16 h-16 text-muted-foreground/50 mb-4" />
               <h3 className="text-lg font-medium text-card-foreground mb-2">
-                Корзина пуста
+                {t.cart.empty}
               </h3>
               <p className="text-muted-foreground text-sm mb-6">
-                Добавьте что-нибудь вкусное из меню
+                {t.cart.emptyDesc}
               </p>
               <button
                 onClick={() => setCartOpen(false)}
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-full font-medium hover:bg-primary/90 transition-all"
               >
-                К меню
+                {t.cart.toMenu}
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -96,7 +104,7 @@ export function CartSidebar() {
                       {item.name}
                     </h4>
                     <p className="text-primary font-bold mt-1">
-                      {item.price} ₽
+                      {formatPrice(item.price)} {t.currency}
                     </p>
 
                     {/* Quantity Controls */}
@@ -141,24 +149,24 @@ export function CartSidebar() {
               className="w-full flex items-center justify-center gap-2 text-muted-foreground hover:text-destructive transition-colors py-2"
             >
               <Trash2 className="w-4 h-4" />
-              <span>Очистить корзину</span>
+              <span>{t.cart.clear}</span>
             </button>
 
             {/* Total */}
             <div className="flex items-center justify-between text-lg">
-              <span className="text-card-foreground">Итого:</span>
-              <span className="text-2xl font-bold text-primary">{totalPrice} Сум</span>
+              <span className="text-card-foreground">{t.cart.total}</span>
+              <span className="text-2xl font-bold text-primary">{formatPrice(totalPrice)} {t.currency}</span>
             </div>
 
             {/* Checkout Button */}
             <button className="w-full bg-primary text-primary-foreground py-4 rounded-full font-bold text-lg hover:bg-primary/90 transition-all hover:scale-[1.02] flex items-center justify-center gap-2">
-              <span>Оформить заказ</span>
+              <span>{t.cart.checkout}</span>
               <ArrowRight className="w-5 h-5" />
             </button>
 
             {/* Delivery Info */}
             <p className="text-center text-muted-foreground text-sm">
-              Бесплатная доставка от 1000 Сум
+              {t.cart.freeDelivery}
             </p>
           </div>
         )}
