@@ -44,10 +44,10 @@ export function Header() {
             className="flex items-center gap-2 group"
           >
             <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
-              <span className="text-primary-foreground font-bold text-lg md:text-xl">X</span>
+              <span className="text-primary-foreground font-bold text-lg md:text-xl">XYZ</span>
             </div>
             <span className="text-foreground font-bold text-xl md:text-2xl tracking-tight">
-              YZ<span className="text-primary">BURGER</span>
+              <span className="text-primary">BURGER</span>
             </span>
           </button>
 
