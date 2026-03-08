@@ -78,7 +78,7 @@ export function MenuCard({ item, index }: MenuCardProps) {
 
         <div className="flex items-center justify-between">
           <span className="text-xl font-bold text-primary">
-            {item.price} so'm
+            {item.price.toLocaleString('uz-UZ')} so'm
           </span>
           <button
             onClick={handleAddToCart}
