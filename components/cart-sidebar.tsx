@@ -147,7 +147,7 @@ export function CartSidebar() {
             {/* Total */}
             <div className="flex items-center justify-between text-lg">
               <span className="text-card-foreground">Итого:</span>
-              <span className="text-2xl font-bold text-primary">{totalPrice} ₽</span>
+              <span className="text-2xl font-bold text-primary">{totalPrice} Сум</span>
             </div>
 
             {/* Checkout Button */}
@@ -158,7 +158,7 @@ export function CartSidebar() {
 
             {/* Delivery Info */}
             <p className="text-center text-muted-foreground text-sm">
-              Бесплатная доставка от 1000 ₽
+              Бесплатная доставка от 1000 Сум
             </p>
           </div>
         )}
