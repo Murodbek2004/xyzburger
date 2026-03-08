@@ -62,7 +62,7 @@ export function Hero() {
           <span className="text-muted-foreground text-sm">Для поколений</span>
           <span className="text-primary font-bold">X</span>
           <span className="text-foreground">•</span>
-          <span className="text-primary font-bold">Миллениалы</span>
+          <span className="text-primary font-bold">Y</span>
           <span className="text-foreground">•</span>
           <span className="text-primary font-bold">Z</span>
         </div>
